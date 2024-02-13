@@ -16,41 +16,57 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   late Future<List> news;
+  String category = "";
+  final List arr = [
+    'business',
+    'entertainment',
+    'general',
+    'health',
+    'science',
+    'sports',
+    'technology'
+  ];
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    news = fetchnews();
+    news = fetchnews("Entertainment");
+  }
+
+  void f(String temp) {
+    setState(() {
+      category = temp;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    final List arr = [
-      'business',
-      'entertainment',
-      'general',
-      'health',
-      'science',
-      'sports',
-      'technology'
-    ];
     var w = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: appcolor.black,
       appBar: appBar(),
       body: Column(children: [
         const SerchBar(),
-        const SingleChildScrollView(
+        SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              filters(text: 'Business'),
-              filters(text: 'Entertainment'),
-              filters(text: 'General'),
-              filters(text: 'Health'),
-              filters(text: 'Technology'),
-              filters(text: 'Science'),
-              filters(text: 'Sports'),
+              filters(text: 'Business', f: f),
+              filters(
+                text: 'Entertainment',
+                f: f,
+              ),
+              filters(
+                text: 'General',
+                f: f,
+              ),
+              filters(
+                text: 'Health',
+                f: f,
+              ),
+              filters(text: 'Technology', f: f),
+              filters(text: 'Science', f: f),
+              filters(text: 'Sports', f: f),
             ],
           ),
         ),
@@ -62,7 +78,7 @@ class _HomeState extends State<Home> {
           child: Container(
             width: w,
             child: FutureBuilder<List>(
-              future: fetchnews(),
+              future: fetchnews(category),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   return ListView.builder(
@@ -70,10 +86,8 @@ class _HomeState extends State<Home> {
                       itemBuilder: (context, index) {
                         return newsbox(
                             url: snapshot.data![index]['url'],
-                            imageurl:
-                                snapshot.data![index]['urlToImage'] != null
-                                    ? snapshot.data![index]['urlToImage']
-                                    : constants.imageurl,
+                            imageurl: snapshot.data![index]['urlToImage'] ??
+                                constants.imageurl,
                             title: snapshot.data![index]['title'],
                             time: snapshot.data![index]['publishedAt'],
                             description: snapshot.data![index]['description']

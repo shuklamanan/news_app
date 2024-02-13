@@ -46,7 +46,7 @@ class MyBottomsheetlayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         borderRadius: BorderRadius.only(
             topLeft: Radius.circular(20), topRight: Radius.circular(20)),
       ),
@@ -56,7 +56,7 @@ class MyBottomsheetlayout extends StatelessWidget {
         children: [
           bottomsheetimage(imageurl: imageurl, title: title),
           Container(
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: Texting(
               text: description,
               size: 16,

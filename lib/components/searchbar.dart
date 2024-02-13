@@ -19,8 +19,8 @@ class _SearchBarState extends State<SerchBar> {
         Expanded(
             child: Container(
           height: 50,
-          margin: EdgeInsets.all(10),
-          padding: EdgeInsets.only(left: 20),
+          margin: const EdgeInsets.all(10),
+          padding: const EdgeInsets.only(left: 20),
           decoration: BoxDecoration(
               color: appcolor.deepgrey,
               borderRadius: BorderRadius.circular(50)),
@@ -29,7 +29,7 @@ class _SearchBarState extends State<SerchBar> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Expanded(
@@ -49,7 +49,7 @@ class _SearchBarState extends State<SerchBar> {
         InkWell(
           onTap: () {
             FocusScope.of(context).unfocus();
-            fetchnews();
+            fetchnews("");
           },
           child: Container(
             width: 45,
@@ -62,7 +62,7 @@ class _SearchBarState extends State<SerchBar> {
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         )
       ],

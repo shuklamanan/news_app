@@ -8,7 +8,7 @@ class DividerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 20, right: 20),
+      padding: const EdgeInsets.only(left: 20, right: 20),
       child: Divider(color: appcolor.lightwhite),
     );
   }
@@ -26,14 +26,14 @@ class bottomsheetimage extends StatelessWidget {
       child: Stack(
         children: [
           Container(
-            foregroundDecoration: BoxDecoration(
+            foregroundDecoration: const BoxDecoration(
               gradient: LinearGradient(
                   colors: [Colors.black, Colors.transparent],
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter),
             ),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(20),
                   topRight: Radius.circular(20),
                 ),

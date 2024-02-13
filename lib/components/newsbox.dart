@@ -47,7 +47,7 @@ class newsbox extends StatelessWidget {
                 ),
                 errorWidget: (context, url, error) => Icon(Icons.error),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 8,
               ),
               Expanded(
@@ -56,7 +56,7 @@ class newsbox extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Texting(text: title, color: appcolor.white, size: 16),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
                   Texting(text: time, color: appcolor.lightwhite, size: 12),

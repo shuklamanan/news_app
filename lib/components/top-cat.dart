@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/utils/colors.dart';
 
-// import
 class filters extends StatelessWidget {
   final String text;
-  const filters({super.key, required this.text});
+  final void Function(String temp)? f;
+  const filters({super.key, required this.text, required this.f});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        f!(text);
+      },
       child: Container(
         decoration: BoxDecoration(
           color: appcolor.lightwhite,
           borderRadius: BorderRadius.circular(5),
         ),
-        padding: EdgeInsets.all(5),
-        margin: EdgeInsets.all(5),
+        padding: const EdgeInsets.all(5),
+        margin: const EdgeInsets.all(5),
         child: Text(
           text,
           style: TextStyle(color: appcolor.black),
