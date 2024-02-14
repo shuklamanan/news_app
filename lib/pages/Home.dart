@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/backend/functions.dart';
-import 'package:news_app/components/appbar.dart';
+// import 'package:news_app/components/appbar.dart';
 import 'package:news_app/components/searchbar.dart';
 import 'package:news_app/components/newsbox.dart';
 import 'package:news_app/components/top-cat.dart';
 import 'package:news_app/provider/provider_string.dart';
 import 'package:news_app/utils/colors.dart';
 import 'package:news_app/utils/constants.dart';
+import 'package:news_app/utils/text.dart';
 import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
@@ -36,7 +37,24 @@ class _HomeState extends State<Home> {
     var w = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: appcolor.black,
-      appBar: appBar(),
+      appBar: AppBar(
+        actions: const [],
+        backgroundColor: appcolor.black,
+        elevation: 0,
+        title: Container(
+          height: 40,
+          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Consumer<changestring>(
+              builder: (context, value, child) {
+                return boldtext(
+                    text: cat.cats, color: appcolor.white, size: 20);
+              },
+            ),
+            Texting(text: ' News', color: appcolor.lightwhite, size: 20),
+          ]),
+        ),
+        centerTitle: true,
+      ),
       body: Column(
         children: [
           const SerchBar(),

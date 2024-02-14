@@ -27,8 +27,8 @@ void showmybottomsheet(
 }
 
 _launchurl(String url) async {
-  if (await canLaunchUrl(url as Uri)) {
-    await launchUrl(url as Uri);
+  if (await launchUrl(Uri.parse(url))) {
+    await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
   } else {
     throw 'Could not launch $url';
   }
@@ -45,6 +45,7 @@ class MyBottomsheetlayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(url);
     return Container(
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.only(
@@ -64,13 +65,17 @@ class MyBottomsheetlayout extends StatelessWidget {
             ),
           ),
           Container(
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: RichText(
               text: TextSpan(children: [
                 TextSpan(
                     text: 'Read Full Article',
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
+                        // String newstr = "";
+                        // for (int i = 8; i < url.length; i++) {
+                        //   newstr += url[i];
+                        // }
                         _launchurl(url);
                       },
                     style: GoogleFonts.lato(

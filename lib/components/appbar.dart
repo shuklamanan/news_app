@@ -3,7 +3,9 @@ import 'package:news_app/utils/colors.dart';
 import 'package:news_app/utils/text.dart';
 
 class appBar extends StatelessWidget implements PreferredSizeWidget {
-  appBar({super.key}) : preferredSize = Size.fromHeight(50);
+  final String newstype;
+  const appBar({super.key, required this.newstype})
+      : preferredSize = const Size.fromHeight(50);
   // super(Key: key);
 
   @override
@@ -18,7 +20,7 @@ class appBar extends StatelessWidget implements PreferredSizeWidget {
       title: Container(
         height: 40,
         child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-          boldtext(text: 'Tech', color: appcolor.primary, size: 20),
+          boldtext(text: newstype, color: appcolor.primary, size: 20),
           Texting(text: 'News', color: appcolor.lightwhite, size: 20),
         ]),
       ),
