@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/backend/functions.dart';
+import 'package:news_app/components/corousels.dart';
 // import 'package:news_app/components/appbar.dart';
 import 'package:news_app/components/searchbar.dart';
 import 'package:news_app/components/newsbox.dart';
@@ -19,6 +20,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   late Future<List> news;
+  List<String> newsimg = [""];
   String category = "";
   @override
   void initState() {
@@ -76,6 +78,9 @@ class _HomeState extends State<Home> {
             width: w,
             height: 10,
           ),
+          VerticalSliderDemo(
+            imgslide: newsimg,
+          ),
           Expanded(
             child: Container(
               width: w,
@@ -85,6 +90,10 @@ class _HomeState extends State<Home> {
                     future: fetchnews(value.cat),
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
+                        for (int i = 0; i < snapshot.data!.length; i++) {
+                          newsimg.add(snapshot.data![i]['urlToImage'] ?? "");
+                          print(snapshot.data![i]['urlToImage']);
+                        }
                         return ListView.builder(
                             itemCount: snapshot.data!.length,
                             itemBuilder: (context, index) {
@@ -118,3 +127,23 @@ class _HomeState extends State<Home> {
     );
   }
 }
+/**
+ * class VerticalSliderDemo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Vertical sliding carousel demo')),
+      body: Container(
+          child: CarouselSlider(
+        options: CarouselOptions(
+          aspectRatio: 2.0,
+          enlargeCenterPage: true,
+          scrollDirection: Axis.vertical,
+          autoPlay: true,
+        ),
+        items: imageSliders,
+      )),
+    );
+  }
+}
+ */

@@ -18,6 +18,7 @@ class newsbox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var w = MediaQuery.of(context).size.width;
+    // print(description + "\n" + title + "\n" + url);
     return Column(
       children: [
         InkWell(
@@ -25,8 +26,8 @@ class newsbox extends StatelessWidget {
             showmybottomsheet(context, title, description, imageurl, url);
           },
           child: Container(
-            padding: EdgeInsets.all(20),
-            margin: EdgeInsets.only(left: 5, top: 5, right: 5),
+            padding: const EdgeInsets.all(20),
+            margin: const EdgeInsets.only(left: 5, top: 5, right: 5),
             width: w,
             color: appcolor.black,
             child: Row(children: [
@@ -45,7 +46,7 @@ class newsbox extends StatelessWidget {
                 placeholder: (context, url) => CircularProgressIndicator(
                   color: appcolor.primary,
                 ),
-                errorWidget: (context, url, error) => Icon(Icons.error),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
               const SizedBox(
                 width: 8,
