@@ -18,7 +18,6 @@ class newsbox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var w = MediaQuery.of(context).size.width;
-    // print(description + "\n" + title + "\n" + url);
     return Column(
       children: [
         InkWell(

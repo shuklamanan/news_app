@@ -72,10 +72,6 @@ class MyBottomsheetlayout extends StatelessWidget {
                     text: 'Read Full Article',
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
-                        // String newstr = "";
-                        // for (int i = 8; i < url.length; i++) {
-                        //   newstr += url[i];
-                        // }
                         _launchurl(url);
                       },
                     style: GoogleFonts.lato(

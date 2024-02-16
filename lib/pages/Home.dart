@@ -24,18 +24,12 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   late Future<List> news;
   List<Widget> newsimg = [];
-  List text = [], description = [], imgurl = [], url = [];
   String category = "";
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     news = fetchnews("");
-  }
-
-  Future<void> refresh() async {
-    setState(() {});
-    return await Future.delayed(const Duration(milliseconds: 10));
   }
 
   @override
@@ -96,10 +90,6 @@ class _HomeState extends State<Home> {
             ),
             VerticalSliderDemo(
               imgslide: newsimg,
-              description: [],
-              imgurl: [],
-              text: [],
-              url: [],
             ),
             Expanded(
               child: Container(
@@ -111,10 +101,6 @@ class _HomeState extends State<Home> {
                       builder: (context, snapshot) {
                         if (snapshot.hasData) {
                           newsimg.clear();
-                          text.clear();
-                          url.clear();
-                          description.clear();
-                          imgurl.clear();
                           for (int i = 0; i < snapshot.data!.length; i++) {
                             newsimg.add(
                               InkWell(
@@ -170,8 +156,6 @@ class _HomeState extends State<Home> {
                                 ),
                               ),
                             );
-                            //newsimg.add(snapshot.data![i]['urlToImage'] ?? "");
-                            print(snapshot.data![i]['urlToImage']);
                           }
                           return ListView.builder(
                               physics: const AlwaysScrollableScrollPhysics(),
@@ -189,7 +173,9 @@ class _HomeState extends State<Home> {
                                         .toString());
                               });
                         } else if (snapshot.hasError) {
-                          return Text("${snapshot.error}");
+                          return const Center(
+                              child: Text(
+                                  "Please Check the Connection and Try Again!!"));
                         }
                         return Center(
                           child: CircularProgressIndicator(
@@ -208,23 +194,3 @@ class _HomeState extends State<Home> {
     );
   }
 }
-/**
- * class VerticalSliderDemo extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Vertical sliding carousel demo')),
-      body: Container(
-          child: CarouselSlider(
-        options: CarouselOptions(
-          aspectRatio: 2.0,
-          enlargeCenterPage: true,
-          scrollDirection: Axis.vertical,
-          autoPlay: true,
-        ),
-        items: imageSliders,
-      )),
-    );
-  }
-}
- */
