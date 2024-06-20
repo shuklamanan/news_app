@@ -11,8 +11,6 @@ class filters extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        col = appcolor.black;
-        textcol = appcolor.white;
         f!(text);
       },
       child: Container(
