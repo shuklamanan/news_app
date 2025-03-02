@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:news_app/backend/functions.dart';
 import 'package:news_app/components/bottomsheet.dart';
-import 'package:news_app/components/componentes1.dart';
 import 'package:news_app/components/corousels.dart';
-// import 'package:news_app/components/appbar.dart';
 import 'package:news_app/components/searchbar.dart';
 import 'package:news_app/components/newsbox.dart';
 import 'package:news_app/components/top-cat.dart';
@@ -25,11 +23,12 @@ class _HomeState extends State<Home> {
   late Future<List> news;
   List<Widget> newsimg = [];
   String category = "";
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    news = fetchnews("");
+    news = fetchNews("");
   }
 
   @override
@@ -97,15 +96,16 @@ class _HomeState extends State<Home> {
                 child: Consumer<changestring>(
                   builder: (context, value, child) {
                     return FutureBuilder<List>(
-                      future: fetchnews(value.cat),
+                      future: fetchNews(""),
                       builder: (context, snapshot) {
                         if (snapshot.hasData) {
                           newsimg.clear();
+                          print("${value.cat} ${value.cats}");
                           for (int i = 0; i < snapshot.data!.length; i++) {
                             newsimg.add(
                               InkWell(
                                 onTap: () {
-                                  showmybottomsheet(
+                                  showMyBottomSheet(
                                       context,
                                       snapshot.data![i]['title'],
                                       snapshot.data![i]['description'],

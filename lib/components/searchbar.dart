@@ -48,8 +48,9 @@ class _SearchBarState extends State<SerchBar> {
         )),
         InkWell(
           onTap: () {
+            print(SerchBar.searchcntrl.text);
             FocusScope.of(context).unfocus();
-            fetchnews("");
+            fetchNews(SerchBar.searchcntrl.text);
           },
           child: Container(
             width: 45,

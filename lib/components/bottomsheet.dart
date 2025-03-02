@@ -6,8 +6,10 @@ import 'package:news_app/utils/colors.dart';
 import 'package:news_app/utils/text.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-void showmybottomsheet(
-    BuildContext context, String title, String description, imageurl, url) {
+void showMyBottomSheet(
+    BuildContext context, String title, String description, imageUrl, url) {
+  print(title);
+  print(description);
   showBottomSheet(
       backgroundColor: appcolor.black,
       shape: const RoundedRectangleBorder(
@@ -19,7 +21,7 @@ void showmybottomsheet(
       builder: (context) {
         return MyBottomsheetlayout(
           url: url,
-          imageurl: imageurl,
+          imageurl: imageUrl,
           title: title,
           description: description,
         );

@@ -22,7 +22,7 @@ class newsbox extends StatelessWidget {
       children: [
         InkWell(
           onTap: () {
-            showmybottomsheet(context, title, description, imageurl, url);
+            showMyBottomSheet(context, title, description, imageurl, url);
           },
           child: Container(
             padding: const EdgeInsets.all(20),
